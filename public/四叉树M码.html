@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>M码</title>
+    </head>
+
+    <body>
+
+        <input type="file" id="filetxt" value="读取文件" onchange="dataRead()">
+        <input type = "button" id = "show_tree" value="线性四叉树" onclick="show_tree()">
+        <input type="button" id="b_try" value="四进制编码" onclick="show_quad()">
+        <input type = "button" id = "dec_code" value="十进制编码" onclick="show_dec()">
+
+
+    <div>
+            <textarea name="result_text" id="result_text" cols="100" rows="30"  onpropertychange= "this.style.posHeight=this.scrollHeight "></textarea>
+    </div>
+
+    <script type="text/javascript">
+
+        var tree=new Array();//记录四叉树内容，依据大小进行初始化
+    
+        var fourtree=new Array();//记录依据行列号的四叉树
+
+        var tentree=new Array();//记录依据行列号的四叉树
+    
+        var txtstr="";//记录txt中所有内容
+    
+        var txtstr_A=new Array();//txtstr经过一次split("\n")后得到的数据
+    
+        var resulttree=new Array();//记录最后的结果
+
+        var result_dec = new Array();//记录转十进制的最后结果
+    
+    
+        function dataRead()
+    
+        {//读取树文件
+    
+            var filename=document.getElementById("filetxt").files[0];
+    
+            readfile(filename,tree,fourtree);
+            
+    
+        }
+        
+        function readfile(filename,tree,fourtree)    
+        {//存储树文件
+    
+            var reader=new FileReader();
+    
+            reader.readAsText(filename,"UTF-8"); 
+            reader.onload=function(f) 
+            {
+                txtstr=txtstr+event.target.result;
+            }
+            
+            console.log(txtstr);
+
+            //此时txtstr_A[0]记录的是"8,8"
+            txtstr_A=txtstr.split("\n");
+            
+
+            //读取行列数
+    
+            var str=new Array();
+    
+            str=txtstr_A[0].split(",");//此处利用split将txtstr_A[0]分开，即str[0]和str[1]分别为行列数
+    
+            var str_txt=new Array();//记录每行的数据
+    
+            //进行初始化tree和fourtree数组
+    
+            for(var i=0;i<str[0];i++)
+            {
+                tree[i]=new Array();
+                fourtree[i]=new Array();
+    
+                for(var j=0;j<str[1];j++)
+                {
+                    tree[i][j]=0;
+                    fourtree[i][j]=0;
+                }
+            }
+
+            /*
+                下列函数作用：
+                    首先是根据txtstr_A数组将 2~9行的数据按行和逗号区分开
+                    然后再利用tree[i][j]=parseInt(str_txt[j]);将0~7号数字分别装入对应位置
+            */
+    
+            for(var i=0;i<str[0];i++)
+            {
+                str_txt=txtstr_A[i+1].split(",");
+    
+                for(var j=0;j<str[1];j++)
+                {
+                    tree[i][j]=parseInt(str_txt[j]);
+                }
+    
+            }
+    
+        }
+    
+       
+        function show_quad()   
+        {
+            dataRead();
+       
+            //初始化结果的数值
+        
+            for(var i=0;i<findmaxvalue();i++)   
+            {  
+                resulttree[i]=new Array();
+        
+                for(var j=0;j<3;j++)    
+                {   
+                    resulttree[i][j]=0;     //i值可取范围0~19
+                }
+        
+            }
+    
+            
+            /*
+                利用十进制转二进制函数num.toString(2)将十进制数num转换为二进制字符串
+                然后利用parseInt()将其转换成数字
+            */
+
+            for(var i=0;i<fourtree.length;i++)  
+            {
+                for(var j=0;j<fourtree.length;j++)
+                {
+                    //第三层   
+                    fourtree[i][j]=parseInt(i.toString(2))*2+parseInt(j.toString(2));
+    
+                }
+    
+            }
+    
+            //开始合并
+
+            /*
+                此处原理就是从(0,0)点处进行循环遍历，然后把相同tree中值相等的数的Morton码变得相同
+                即从0~6 0~6 一直判断
+            */
+            for(var i=0;i<fourtree.length-1;i++)  
+            {
+                for(var j=0;j<fourtree.length-1;j++)
+                {
+    
+                    if(tree[i][j]==tree[i][j+1]&&tree[i][j]==tree[i+1][j]&&tree[i][j]==tree[i+1][j+1])   
+                    {
+                        fourtree[i][j+1]=fourtree[i][j];
+    
+                        fourtree[i+1][j]=fourtree[i][j];
+    
+                        fourtree[i+1][j+1]=fourtree[i][j];
+                    }
+    
+                }
+    
+            }
+    
+            //开始记录4进制
+    
+            for(var i=0;i<fourtree.length;i++)  
+            {
+                for(var j=0;j<fourtree.length;j++)
+                {
+                    resulttree[tree[i][j]][2]=tree[i][j];//记录值
+    
+                    resulttree[tree[i][j]][1]=resulttree[tree[i][j]][1]+1;//记录有几个相同的数
+    
+                    resulttree[tree[i][j]][0]=fourtree[i][j];//记录morton码
+                }
+    
+            }
+    
+            
+            //将有几个相同的数转为深度，将morton转为字符
+            
+            //此时resulttree.length为20
+
+            for(var i=0;i<resulttree.length;i++)       
+            {       
+                if(resulttree[i][1]==16)
+                {
+                    resulttree[i][1]=1;
+                }
+
+                else if(resulttree[i][1]==4)
+                {
+                    resulttree[i][1]=2;
+
+                    resulttree[i][0]=resulttree[i][0]/10;
+
+                }
+
+                else if(resulttree[i][1]==1)
+                {
+                    resulttree[i][1]=3;
+                }
+        
+            }
+        
+            showtxt();
+                 
+        }
+        
+        
+        function findmaxvalue()  
+        {//找到实际数值的最大值，并返回
+    
+            var max=0;   
+
+            for(var i=0;i<tree.length;i++) 
+            { 
+                for(var j=0;j<tree.length;j++)
+                {
+                    if(tree[i][j]>max)  
+                    {
+                        max=tree[i][j]; 
+                    } 
+                }
+            }
+    
+            /*
+                需要返回max+1  因为 resulttree数组需要利用值（0~19）来存储对应的深度，值以及morton码
+                所以返回max+1 可以使得数组中允许resulttree[19][0]的存在
+            */
+            return (max+1);         
+        }
+    
+        function show_dec()
+        {
+            dataRead();
+
+            for(var i=0;i<tree.length;i++)
+            {
+                tentree[i]=new Array();
+
+                var g,s,b;
+
+                for(var j=0;j<tree.length;j++)
+                {
+                    tentree[i][j]=parseInt(i.toString(2))*2+parseInt(j.toString(2));
+                    
+                    g=tentree[i][j]%10;
+                    b=parseInt(tentree[i][j]/100);
+                    s=parseInt((tentree[i][j]-b*100)/10);
+
+                    tentree[i][j]=g+s*4+b*4*4;
+                }
+            }
+
+
+            //对数组进行初始化
+            for(var i=0;i<findmaxvalue();i++)
+            {
+                result_dec[i] = new Array();
+
+                for(var j=0;j<3;j++)
+                {
+                    result_dec[i][j]=0;
+                }
+            }
+
+            for(var i=0;i<tree.length-1;i++)
+            {
+                for(var j=0;j<tree.length-1;j++)
+                {
+                    if(tree[i][j]==tree[i][j+1]&&tree[i][j]==tree[i+1][j]&&tree[i][j]==tree[i+1][j+1])   
+                    {
+                        tentree[i][j+1]=tentree[i][j];
+    
+                        tentree[i+1][j]=tentree[i][j];
+    
+                        tentree[i+1][j+1]=tentree[i][j];
+                    }
+                }
+            }
+
+            for(var i=0;i<tentree.length;i++)
+            {
+                for(var j=0;j<tentree.length;j++)
+                {
+                    result_dec[tree[i][j]][0]=tentree[i][j];
+                    result_dec[tree[i][j]][1]=result_dec[tree[i][j]][1]+1;
+                    result_dec[tree[i][j]][2]=tree[i][j];
+                    
+                }
+            }
+            
+
+            for(var i=0;i<result_dec.length;i++)       
+            {   
+                if(result_dec[i][1]==16)
+                {
+                    result_dec[i][1]=1;                   
+                }
+
+                else if(result_dec[i][1]==4)
+                {
+                    result_dec[i][1]=2;
+
+                    result_dec[i][0]=result_dec[i][0]/4;
+                
+                }
+
+                else if(result_dec[i][1]==1)
+                {
+                    result_dec[i][1]=3;
+                }
+
+            }
+
+            show_dectxt();
+        }
+        
+    
+        function showtxt()
+    
+        {//将结果输出至txterea
+            
+            var str1="四进制编码";
+
+            var str="\r\n";
+    
+            for(var i=0;i<resulttree.length;i++)
+            {
+                
+                if(resulttree[i][1]!=0)    
+                {   
+                    str=str+i+"  :("+resulttree[i][0]+","+resulttree[i][1]+","+resulttree[i][2]+")\r\n";  
+                }
+    
+            }
+    
+            document.getElementById("result_text").innerText=str1+str;  
+            
+            console.log();
+        }
+
+        function show_dectxt()
+        {
+            dataRead();
+
+            var str1="十进制编码";
+
+            var str = "\r\n";
+
+            for(var i=0;i<result_dec.length;i++)
+            {
+                if(result_dec[i][1] != 0)
+                {
+                    str = str+i+" :("+result_dec[i][0]+","+result_dec[i][1]+","+result_dec[i][2]+")\r\n";
+                }
+            }
+
+            document.getElementById("result_text").innerHTML=str1+str;
+
+        }
+
+
+        function show_tree()
+        {
+            dataRead();
+
+            var str1="线性四叉树";
+
+            var str = "\r\n";
+
+            for(var i=0;i<tree.length;i++)
+            {
+                for(var j=0;j<tree.length;j++)
+                {
+                    str=str+tree[i][j]+","+'\xa0';
+                }
+                str = str+"\r\n";
+            }
+
+            document.getElementById("result_text").innerText=str1+str;
+
+        }
+        
+
+        console.log(tentree);
+    
+        </script>
+
+    </body>
+
+</html>

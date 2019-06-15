@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>面积计算</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+    <input type="file" id="filemap" onclick="readmap()">
+			
+    <input type="button" id="showmap" value="显示地图(墨卡托)" onclick="Map_Mercator()">
+    <input type="button" id="S_MO" value="面积显示" onclick="Area()">
+	<input type="button" id="MO_to_Q" value="地理坐标-->经纬度坐标" onclick = "Reverse_Mer()">
+	
+	<div style = "position:absolute; width:1000px;height:800px">
+		<canvas id="canvas" width="800"height="800" style="border:1px solid #000000;"></canvas>
+		<div style = "position:relative;float:right;width:50px;height:800px">
+			<textarea name="r_text" id="rr_text" cols="38" rows="30" style = "border:1px solid #000000;"></textarea>
+		</div>
+	</div>
+
+</body>
+
+<script type="text/javascript">
+
+
+var map=new Array();//记录地图数据
+
+var txtstr="";//记录txt中所有内容
+
+var txtstr_A=new Array();
+
+var areas=new Array();//记录面积
+
+
+function readfile(filename,str_A)
+
+{//读取文件
+
+    var reader=new FileReader();
+    reader.readAsText(filename,"UTF-8");
+    reader.onload=function(f)
+
+    {
+        txtstr=txtstr+event.target.result;
+    }
+
+    txtstr_A=txtstr.split("\n");
+
+    for(var i=0;i<txtstr_A.length+2;i++)
+    {
+        str_A[i]=new Array();
+        for(j=0;j<2;j++)
+        {
+            str_A[i][j]=0;
+        }
+    }
+
+    for(var i=0;i<txtstr_A.length;i++)
+    {//将文件转成数字形式
+         if(isNaN(parseInt(txtstr_A[i])))
+        {//String(txtstr_A[i])==String(txtstr_A[3])
+            str_A[i][0]=999;//线结束
+             continue;
+        }
+
+        str_A[i]=txtstr_A[i].split(",");
+        str_A[i][0]=parseFloat(str_A[i][0]);
+        str_A[i][1]=parseFloat(str_A[i][1]);
+
+        if(isNaN(str_A[i][1]))
+
+        {//当有些整数数字判断不出，再一次检查一遍
+            str_A[i][0]=-1;//线开始
+            continue;
+        }
+         continue;
+    //结束初始化
+    }  
+	
+    str_A[txtstr_A.length][0]=999;
+    str_A[txtstr_A.length+1][0]=999;
+}
+
+
+
+function readmap()
+
+{//点击“读取文件”事件
+
+    var filename=document.getElementById("filemap").files[0];
+
+    readfile(filename,map);
+
+//    console.log(map);
+
+}
+
+
+
+function Map_Mercator()
+
+{//点击“显示地图-墨”
+
+        readmap();
+
+        var c=document.getElementById("canvas");
+
+        var ctx=c.getContext("2d");
+
+        ctx.beginPath();
+
+        for(var j=0;j<map.length-1;j++)
+
+        {   
+
+            if(map[j][0]==-1)
+
+            {
+                ctx.moveTo((map[j+1][0]/1000-12800),800-(map[j+1][1]/1000-3500));
+
+                j++;
+
+                continue;
+
+            }
+
+            if(map[j][0]==999)
+
+            {//有END时结束当前画图，开始下一条线
+
+                if(map[j+1][0]==999)
+
+                {//有两个END结束
+
+                    break;
+
+                }
+                continue;
+
+            }
+
+            //既不是起点也不是END
+
+            ctx.lineTo((map[j][0]/1000-12800),800-(map[j][1]/1000-3500));
+
+        }
+
+         ctx.strokeStyle="#8B008B";
+
+         ctx.stroke();
+
+         ctx.closepath;
+
+         console.log(map);
+
+}
+
+function Area()
+{//计算江苏省面积，反映在表格中
+     var kx;
+     var ky;
+     var A_num=0;//记录当前是哪个
+     var S_str="江苏省面积显示\r\n";//记录面积字符串
+
+     for(var j=0;j<13;j++)
+     {//初始化area数组
+         areas[j]=0;
+     }
+
+     for(var i=0;i<map.length-1;i++)
+     {
+         if(map[i][0]==-1)
+         {
+             kx=map[i+1][0];
+             ky=map[i+1][1];
+
+             areas[A_num]=map[i+1][0]*map[i+2][1]-map[i+2][0]*map[i+1][1];
+             i++;
+			 
+             continue;
+         }
+
+        if(map[i][0]==999)
+         {//有END时结束当前画图，开始下一条线
+                if(map[i+1][0]==999)
+                {//有两个END结束
+                    break;
+                }
+
+                areas[A_num]=Math.abs(areas[A_num]/2);				
+                S_str=S_str+(A_num+1)+"  的面积："+areas[A_num]+ " m^2" + "\r\n";
+                
+				A_num=A_num+1;
+                areas[A_num]=0;
+
+                continue;
+
+         }
+
+         areas[A_num]+=map[i][0]*map[i+1][1]-map[i+1][0]*map[i][1]
+     }  
+     document.getElementById("rr_text").value=S_str;
+     console.log(areas);
+
+}
+
+function Reverse_Mer()
+
+{//墨卡托投影反算,经纬度坐标,54坐标系0.006693421622966
+
+    var a=6378245;
+
+    var b=6356863.01877;
+
+    var e_2=0.006693421622966;//54坐标系
+
+    var e2_2=0.006738525414684;//e2_2=e'^2
+
+    //80坐标系：0.006694384999588
+    var e=Math.sqrt(e_2);
+    var BL_str="54坐标系下：经纬度坐标\r\n";//记录面积字符串
+    var num=0;
+    var K=(a*a/b)/Math.sqrt(1+e2_2*1);
+
+    for(var i=0;i<map.length-1;i++)
+     {
+         if(map[i][0]==-1)
+         {
+             BL_str=BL_str+"第"+num+"个："+"\r\n";
+             continue;
+         }
+
+        if(map[i][0]==999)
+
+         {//有END时结束当前画图，开始下一条线
+
+                if(map[i+1][0]==999)
+                {//有两个END结束
+                    break;
+                }
+
+                num=num++;
+                BL_str=BL_str+"END\r\n";
+
+                continue;
+         }
+
+         //x=B;y=L;
+
+        map[i][0]=map[i][0]/K/Math.PI*180;
+         map[i][1]=map[i][1]/K/Math.PI*180;
+
+         map[i][1]=180/Math.PI*(2*Math.atan(Math.exp(map[i][1]*Math.PI/180))-Math.PI/2);
+         BL_str=BL_str+"("+map[i][0]+"E,"+map[i][1]+"N)\r\n";
+
+     }  
+
+     console.log(map);
+}
+    </script>
+
+</html>
