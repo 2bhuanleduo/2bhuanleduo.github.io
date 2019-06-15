@@ -1,4 +1,4 @@
-10170355 算法作业
+10170355 舒佳俊的算法作业
 ================
 ### [跳马问题](http://2bhuanleduo.github.io//public//jumpHorse.html)
 ### [最佳工作序列](http://2bhuanleduo.github.io//public//bestWorkList.html)  
