@@ -6,11 +6,16 @@
 	<meta charset="UTF-8">
 </head>
 <body>
+
+    <span style="color:skyblue;font-size:20px;font-family:宋体">10170355 舒佳俊</span>
+
+	<br />
+
     <input type="file" id="filemap" onclick="readmap()">
 			
     <input type="button" id="showmap" value="显示地图(墨卡托)" onclick="Map_Mercator()">
     <input type="button" id="S_MO" value="面积显示" onclick="Area()">
-	<input type="button" id="MO_to_Q" value="地理坐标-->经纬度坐标" onclick = "Reverse_Mer()">
+	<input type="button" id="MO_to_Q" value="地理坐标-->经纬度坐标(console中)" onclick = "Reverse_Mer()">
 	
 	<div style = "position:absolute; width:1000px;height:800px">
 		<canvas id="canvas" width="800"height="800" style="border:1px solid #000000;"></canvas>

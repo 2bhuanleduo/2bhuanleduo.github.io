@@ -2,8 +2,6 @@
 
 <html>
 
-
-
 <head>
 
     <title>左转算法</title>
@@ -41,6 +39,10 @@
 
 
 <body>
+
+    <span style="color:skyblue;font-size:20px;font-family:宋体">10170355 舒佳俊</span>
+
+	<br />
 
     <a style="margin-left: 20px">选择输入文件：</a><input type="file" id="file" style="width: 200px;" />
 
@@ -316,13 +318,9 @@
 
         function CheckDao() {
 
-
-
             var again = [];
 
             var area = [];
-
-
 
             for (var i = 0; i < polypoint.length; i++) {
 
@@ -332,21 +330,15 @@
 
             }
 
-
-
             area.sort(function (a, b) {
 
                 return a.area - b.area;
 
             });
 
-
-
             var dao = [];
 
             var reduce = [];
-
-
 
             for (var i = 0; i < area.length; i++) {
 
@@ -1036,10 +1028,6 @@
 
         }
 
-
-
-
-
         function DrawPolygon(data) {
 
             ctx.strokeStyle = "red";
@@ -1054,15 +1042,11 @@
 
                 var line = data[i];
 
-
-
                 if (line == "END" && data[i - 1] != "END") {
 
                     var last = data[i - 1];
 
                     point = last.split(',');
-
-
 
                     point[0] = parseFloat(point[0]);
 
