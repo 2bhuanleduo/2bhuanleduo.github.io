@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>二进制转其他进制</title>
+    </head>
+
+    <body>
+        <table cellspacing="14">
+            <tr>
+                <td>二进制数</td>
+                <td><input type="number" id="Binary" value=0></td>
+            </tr>
+        </table>    
+
+        <button type="button" onclick="BToD()">二进制转十进制</button>
+        <button type="button" onclick="BToO()">二进制转八进制</button>
+        <button type="button" onclick="BToH()">二进制转十六进制</button>
+
+        <script type="text/javascript">
+            //二进制转十进制定义
+            {
+            var B_before_dot,B_after_dot;   //分别用来存储整数和小数部分的值
+
+            var str,B_result;            //str用来存储输入的数字 字符串
+
+            var B_number=0;
+            var B_after_number;       //用来存储小数点后位数
+            var B_before_number;      //用来存储整数位数
+
+            var B_before=new Array();         //用来存储整数部分的各数值
+            var B_after=new Array();          //用来存储小数部分的各数值
+            }
+            
+            //二进制转八进制定义
+            {
+            var O_before_dot,O_after_dot;
+
+            var O_before_number,O_after_number;
+
+            var O_before=new Array();
+            var O_after=new Array();
+
+            var str1="";
+            }
+
+            //二进制转十六进制定义
+            {
+                var H_before_dot,H_after_dot;
+
+                var H_before_number,H_after_number;
+
+                var H_before=new Array();
+                var H_after=new Array();
+            }
+
+            //二进制转十进制部分
+            {
+            function BToD()
+            {
+                alert("结果在console中");
+
+                var binary=document.getElementById("Binary").value;
+
+                str=binary.split(".");
+
+                console.log(str);
+                
+                B_before_dot=parseInt(str[0]);
+
+                B_after_dot=parseInt(str[1]);
+
+                B_after_number=B_GetNumber(B_after_dot,0);
+                
+                //如果直接用数值相减来计算，小数部分会出现很多多余的数值
+
+                
+                B_after_dot_change();   //将分离后的after_dot变成小数
+                
+
+                B_Integer(B_before_dot);
+                B_Decimal(B_after_dot);
+
+                var B_numb=0,B_numa=0;
+
+                for(var i=0;i<B_before_number;i++)
+                {
+                    B_numb=B_numb+B_before[i]*Math.pow(2,i);
+                }
+
+                for(var j=1;j<=B_after_number;j++)
+                {
+                    B_numa=B_numa+B_after[B_after_number-j]*Math.pow(2,-j);
+                }
+
+                B_result=B_numa+B_numb;
+
+                console.log(B_result);
+                
+            }
+
+            //将分离后的after_dot变成小数   二转十
+            function B_after_dot_change()
+            {
+                for(var j=0;j<B_after_number;j++)
+                {
+                    B_after_dot=parseFloat(B_after_dot/10);     
+                }
+
+                B_after_dot=B_after_dot.toFixed(B_after_number);
+            }
+
+            //用来分离整数部分的数值
+            function B_Integer(num)
+            {
+                B_before_number=B_GetNumber(B_before_dot,0);
+
+                for(var j=0;j<B_before_number;j++)
+                {
+                    B_before[j]=num%10;
+                    num=parseInt(num/10);
+                }
+            }
+            //用于分离小数部分数值
+            function B_Decimal(num)
+            {
+                var num2=parseInt(str[1]);
+
+                for(var i=0;i<B_after_number;i++)
+                {
+                    B_after[i]=num2%10;
+                    num2=parseInt(num2/10);
+                }
+            }
+            
+            function B_GetNumber(data,B_number)
+            {
+
+                for(var i=0;i<40;i++)
+                {
+                    var data=data/10;
+                    B_number++;
+
+                    if(parseInt(data)==0)
+                    {
+                        break;
+                    }
+                
+                }
+
+                return B_number;
+
+            }
+            }
+            //二进制转八进制部分
+            {
+                function BToO()
+                {
+                    alert("转换成功！结果在console中！");
+                    var binary=document.getElementById("Binary").value;
+
+                    str=binary.split(".");
+
+                    O_before_dot=parseInt(str[0]);
+                    O_after_dot=parseInt(str[1]);
+
+                    O_after_number=B_GetNumber(O_after_dot,0);
+                    O_before_number=B_GetNumber(O_before_dot,0);
+                    
+                    //将各数存进数组中
+                    O_before_number=O_integer(O_before_dot,O_before_number);
+                    O_after_number=O_decimal(O_after_dot,O_after_number);
+
+                    for(var i=O_before_number-1;i>=2;)
+                    {
+                        str1=str1+String(O_before[i]*Math.pow(2,0)+O_before[i-1]*Math.pow(2,1)+O_before[i-2]*Math.pow(2,2));
+                        i=i-3;
+                    }
+                    str1=str1+".";
+                    for(var j=O_after_number-1;j>=2;)
+                    {
+                        str1=str1+String(O_after[j]*Math.pow(2,2)+O_after[j-1]*Math.pow(2,1)+O_after[j-2]*Math.pow(2,0));
+                        j=j-3;
+                    }
+                    console.log(str1);
+                }
+
+                function O_integer(data,num)
+                {
+                    for(var j=0;j<num;j++)
+                    {
+                        O_before[j]=data%10;
+                        data=parseInt(data/10);
+                    }
+
+                    var a=num%3;
+
+                    if(a!=0)
+                    {
+                        num=num+(3-a);
+                    }
+
+                    for(var i=O_before_number;i<num;i++)
+                    {
+                        O_before[i]=0;
+                    }
+
+                    return num;
+                }
+
+                function O_decimal(data,num)
+                {
+                    for(var j=0;j<num;j++)
+                    {
+                        O_after[j]=data%10;
+                        data=parseInt(data/10);
+                    }
+
+                    var b=num%3;
+
+                    if(b!=0)
+                    {
+                        num=num+(3-b);
+                    }
+
+                    for(var i=num-1;i>=b;i--)
+                    {
+                        O_after[i]=O_after[i-3+b];
+                    }
+                  
+                    if(b==1)
+                    {
+                        O_after[0]=O_after[1]=0;
+                    } 
+
+                    if(b==2)
+                    {
+                        O_after[0]=0;
+                    } 
+
+                    return num;
+
+                }
+                
+                console.log(O_before);
+                console.log(O_after);
+
+            }
+
+            //二进制转十六进制
+            {
+                function BToH()
+                {
+                    alert("转换成功！结果在console中！");
+                    var binary=document.getElementById("Binary").value;
+
+                    str=binary.split(".");
+
+                    var str2="";
+
+                    H_before_dot=parseInt(str[0]);
+                    H_after_dot=parseInt(str[1]);
+
+                    H_before_number=B_GetNumber(H_before_dot,0);
+                    H_after_number=B_GetNumber(H_after_dot,0);
+
+                    H_before_number=O_integer(H_before_dot,H_before_number);
+                    H_after_number=O_decimal(H_after_dot,H_after_number);
+
+                    for(var i=H_before_number-1;i>=3;i=i-4)
+                    {
+                        var num = O_before[i]*Math.pow(2,3)+O_before[i-1]*Math.pow(2,2)+O_before[i-2]*Math.pow(2,1)+O_before[i-3]*Math.pow(2,0);
+                        if(num>=10)
+                        {
+                            str2=is_bt_ten(str2,num);
+                        }
+                        else
+                        {
+                            str2=str2+String(num);
+                        }
+
+                    }
+
+                    str2=str2+".";
+
+                    for(var j=H_after_number-1;j>=3;j=j-4)
+                    {
+                        var num=O_after[j]*Math.pow(2,3)+O_after[j-1]*Math.pow(2,2)+O_after[j-2]*Math.pow(2,1)+O_after[j-3]*Math.pow(2,0);
+                        
+                        if(num>=10)
+                        {
+                            str2=is_bt_ten(str2,num);
+                        }
+                        else
+                        {
+                            str2=str2+String(num);
+                        }
+                    }
+
+                    console.log(str2);
+                }
+
+                function is_bt_ten(str2,num)
+                {
+                    switch(num)
+                    {
+                        case 10: str2=str2+"A"; break;
+                        case 11: str2=str2+"B"; break;
+                        case 12: str2=str2+"C"; break;
+                        case 13: str2=str2+"D"; break;
+                        case 14: str2=str2+"E"; break;
+                        case 15: str2=str2+"F"; break;
+                    }
+
+                    return str2;
+                }
+
+                function O_integer(data,num)
+                {
+                    for(var i=0;i<num;i++)
+                    {
+                        O_before[i]=data%10;
+                        data=parseInt(data/10);
+                    }
+
+                    var a=num%4;
+
+                    if(a!=0)
+                    {
+                        num=num+4-a;
+                    }
+
+                    for(var i=O_before_number;i<num;i++)
+                    {
+                        O_before[i]=0;
+                    }
+
+                    return num;
+                }
+
+                function O_decimal(data,num)
+                {
+                    for(var j=0;j<num;j++)
+                    {
+                        O_after[j]=data%10;
+                        data=parseInt(data/10);
+                    }
+
+                    var b=num%4;
+
+                    if(b!=0)
+                    {
+                        num=num+4-b;
+                    }
+
+                    for(var j=num-1;j>=3;j--)
+                    {
+                        O_after[j]=O_after[j-4+b];
+                    }
+
+                    if(b==1)
+                    {
+                        O_after[0]=O_after[1]=O_after[2]=0;
+                    }
+
+                    if(b==2)
+                    {
+                        O_after[0]=O_after[1]=0;
+                    }
+
+                    if(b==3)
+                    {
+                        O_after[0]=0;
+                    }
+
+                    return num;
+                }
+
+
+            }
+        </script>
+
+    </body>
+</html>
