@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>逆地理编码示例</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+
+        <span>location</span>
+        <input type="text" id="LoLa">
+
+        <span>poitype</span>
+        <input type="text" id="poitype">
+
+        <span>radius</span>
+        <input type="number" id="radius">
+
+        <span>extensions</span>
+        <select style="height:25px;" id="type1">
+            <option value="all">all</option>
+            <option value="base">base</option>
+        </select>
+
+        <span>batch</span>
+        <select style="height:25px;" id="type2">
+            <option value="false">false</option>
+            <option value="true">true</option>
+        </select>
+
+        <span>roadlevel</span>
+        <input type="number" id="num" min="0" max="1" placeholder="0">
+
+        <br />
+        <input type="button" id="temp" value="查询" onclick="Query()">
+
+        <br />
+
+        <textarea name="result_text" id="result_text" cols="100" rows="30" onpropertychange= "this.style.posHeight=this.scrollHeight "></textarea>
+
+    </body>
+
+    <script>
+        
+        var add="https://restapi.amap.com/v3/geocode/regeo?";
+
+        var key="466a5fca629f7367b446fc6ba6022f17";
+
+        function Query()
+        {
+            var lola = document.getElementById("LoLa").value;
+            var poi = document.getElementById("poitype").value;
+            var r = document.getElementById("radius").value;
+            var extent = document.getElementById("type1").value;
+            var b = document.getElementById("type2").value;
+
+            var roadlevel = document.getElementById("num").value;
+        
+            var url=add+"key="+key+"&location="+lola+"&poitype="+poi+"&radius="+r+"&extensions="+extent+"&batch="+b+"&roadlevel="+roadlevel;
+
+            console.log(url);
+
+            //发送请求
+            Request(url);
+
+        }
+
+        function Request(url)
+        {
+            const Http = new XMLHttpRequest();
+            Http.open("GET",url);
+            Http.send();
+
+            Http.onreadystatechange=function(){
+                if(this.readyState==4&&this.status==200){
+                    console.log(Http.responseText);
+                    document.getElementById("result_text").innerText=Http.responseText;
+                }
+            }
+        }
+
+    </script>
+
+</html>

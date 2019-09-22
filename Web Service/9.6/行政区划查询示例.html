@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>行政区划查询</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+
+        <span>keywords</span>
+        <input type="text" id="province">
+
+        <span>subdistrict</span>
+        <input type="number" min="0" max="4" id="num" placeholder="0">
+
+        <span>extensions</span>
+        <select id="type">
+            <option value="base">base</option>
+            <option value="all">all</option>
+        </select>
+
+        <input type="button" id="chaxun" value="查询" onclick="Query()">
+
+        <br />
+
+        <textarea name="result_text" id="result_text" cols="100" rows="30" onpropertychange= "this.style.posHeight=this.scrollHeight "></textarea>
+
+    </body>
+
+    <script>
+        
+        var add="https://restapi.amap.com/v3/config/district?";
+
+        var key="466a5fca629f7367b446fc6ba6022f17";
+
+        function Query()
+        {
+            var keyword = document.getElementById("province").value;
+
+            var sub = document.getElementById("num").value;
+
+            var extent = document.getElementById("type").value;
+
+            var url = add+"key="+key+"&keywords="+keyword+"&subdistrict="+sub+"&extensions="+extent+"&output=xml";
+
+            console.log(url);
+
+            Request(url);
+        }
+
+        function Request(url)
+        {
+            const Http = new XMLHttpRequest();
+
+            Http.open("GET",url);
+            Http.send();
+
+            Http.onreadystatechange=function()
+            {
+                if(this.readyState==4&&this.status==200)
+                {
+                    console.log(Http.responseText);
+                    document.getElementById("result_text").innerText=Http.responseText;
+                }
+            }
+        }
+
+    </script>
+</html>

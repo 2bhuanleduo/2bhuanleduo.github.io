@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>地理编码示例</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <span>address</span>
+
+        <input type="text" id="location">
+
+        <br />
+
+        <input type="button" id="check" value="查询" onclick=Check()>
+
+        <br />
+
+        <textarea name="result_text" id="result_text" cols="100" rows="30" onpropertychange= "this.style.posHeight=this.scrollHeight "></textarea>
+
+    </body>
+
+    <script type="text/javascript">
+        
+        var temp="https://restapi.amap.com/v3/geocode/geo?";
+
+        var key="466a5fca629f7367b446fc6ba6022f17";
+
+        var url;
+        
+        //进行查询
+        function Check()
+        {
+
+            var address=document.getElementById("location").value;
+
+            url= temp+"address="+address+"&output=XML&key="+key;
+
+            Request(url);
+        }
+
+        //发送请求
+        function Request(url)
+        {
+            const Http = new XMLHttpRequest();
+            Http.open("GET",url);
+            Http.send();
+
+            Http.onreadystatechange=function(){
+                if(this.readyState==4&&this.status==200){
+                    // console.log(Http.responseText);
+                    document.getElementById("result_text").innerText=Http.responseText;
+                }
+            }
+        }
+
+    </script>
+
+
+</html>

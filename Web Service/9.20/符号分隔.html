@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>符号分隔</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <input type="file" id="file" onchange="ProcessFile()">
+        <input type="button" id="Exchange" onclick="Exchange()" value="分隔">
+        <input type="button" id="click" onclick="SaveFile()" value="保存">
+    </body>
+
+    <script>
+
+        var str="";
+
+        var name;
+
+        function ProcessFile()
+        {
+            var file=document.getElementById("file").files[0];
+            var reader=new FileReader();
+            reader.readAsText(file);
+            reader.onload=function(e)
+            {
+                str=this.result;
+            }
+
+            name=document.getElementById("file").files[0].name;
+
+        }
+
+        function Exchange()
+        {
+
+            str = "x,y;" + str;
+
+            str = str.replace(/;/g,"\n");
+
+            str = str.replace(/\|/g,"\n");
+
+            console.log(str);
+
+        }
+
+        function SaveFile()
+        {
+            var element = document.createElement('a');
+
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(str));
+
+            element.setAttribute('download', name);
+
+            element.style.display = 'none';
+
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+
+        // function SaveFile()
+        // {
+        //     var urlObject = window.URL || window.webkitURL || window;
+        //     var export_blob = new Blob([str]);
+        //     var save_link = document.createElementNS("http://www.w3.org/1999/xhtml","a");
+        //     save_link.href=urlObject.createObjectURL(export_blob);
+        //     save_link.download=name;
+        //     fakeClick(save_link);
+
+        // }
+
+        // function fakeClick(obj)
+        // {
+        //     var ev = document.createEvent("MouseEvents");
+        //     ev.initMouseEvent("click",true,false,window,0,0,0,0,0,false,false,false,false,0,null);
+        //     obj.dispatchEvent(ev);
+        // }
+
+
+    </script>
+</html>
