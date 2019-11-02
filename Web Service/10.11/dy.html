@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>工业百强</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+
+        <input type="file" id="inputFile" value = "读取文件" onchange="fileReader()">
+    
+        <script>
+
+            var str="";
+            var json;
+
+            var coor = "x,y,name"+"\n";
+            var c=1;
+            
+
+            function fileReader()
+            {
+
+                filename = document.getElementById("inputFile").files[0];
+
+                var reader = new FileReader();
+                
+                reader.readAsText(filename,"utf-8");
+                reader.onload = function(e)
+                {
+                    str = str+event.target.result;
+                    
+                    json = JSON.parse(str);
+                    
+                    for(var i = 0;i<json.length;i++)
+                    {
+                        var url = "https://restapi.amap.com/v3/geocode/geo?address="+json[i].DWMC+"&output=JSON&key=ef4b396ca81ec9f982fcd3f0a8ed5ee6&&city=深圳";
+                        Request(url,json[i].DWMC);
+                    }
+                    
+                }
+
+            }
+
+            function Request(url,name)
+            {
+                const Http = new XMLHttpRequest();
+
+                Http.open("GET",url);
+                Http.send();
+
+                Http.onreadystatechange=function()
+                {
+                    if(this.readyState==4&&this.status==200)
+                    {
+                        xmlString = Http.responseText;
+                        // console.log(xmlString);
+                        xmlToJson = JSON.parse(xmlString);
+                        
+                        c++;
+                        // console.log(c++);
+                        // console.log(url);
+                        // console.log(xmlToJson.geocodes[0].location);
+
+                        if(xmlToJson.geocodes.length==0){return;}
+                        else{coor += xmlToJson.geocodes[0].location+","+name+"\n";}
+
+                        if(c==100){console.log(coor);}
+                            
+                    
+                    }
+
+
+                }
+
+            }
+
+        </script>
+    </body>
+</html>

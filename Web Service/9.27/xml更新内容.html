@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>xml更新内容</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <script type="text/javascript">
+
+            var str;
+
+            try //Internet Explorer
+            {
+                xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+            }
+            catch(e)
+            {
+            try //Firefox, Mozilla, Opera, etc.
+            {
+                xmlDoc=document.implementation.createDocument("","",null);
+            }
+            catch(e) {alert(e.message)}
+            }
+            try 
+            {
+            xmlDoc.async=false;
+            xmlDoc.load("bookstore.xml");
+            }
+            catch(e) {alert(e.message)}
+
+            str = xmlDoc.getElementsByTagName("book");
+            document.write("初始值："+"<br />");
+            showIt(str);
+
+            //使用nodeValue属性改变文本节点的值
+            x= xmlDoc.getElementsByTagName("title")[0].childNodes[0];
+            x.nodeValue="Hello World";
+
+            //替换第二个<book>元素
+            x=xmlDoc.documentElement;
+
+            newNode=xmlDoc.createElement("book");
+            newTitle=xmlDoc.createElement("title");
+            newText = xmlDoc.createTextNode("Hello World");
+
+            newTitle.appendChild(newText);
+
+            newNode.appendChild(newTitle);
+
+            y=xmlDoc.getElementsByTagName("book")[3];
+
+            x.replaceChild(newNode,y);
+
+            str = xmlDoc.getElementsByTagName("book");
+            document.write("变更后结果："+"<br />");
+            showIt(str);
+
+            
+
+            function showIt(str)
+            {
+                for(var i = 0;i<str.length;i++)
+                {
+                    document.write(xmlDoc.getElementsByTagName("title")[i].childNodes[0].nodeValue);
+                    document.write("<br />");
+                    document.write(xmlDoc.getElementsByTagName("author")[i].childNodes[0].nodeValue);
+                    document.write("<br />");
+                    document.write(xmlDoc.getElementsByTagName("year")[i].childNodes[0].nodeValue);
+                    document.write("<br />");
+                    document.write(xmlDoc.getElementsByTagName("price")[i].childNodes[0].nodeValue);
+                    document.write("<br />");
+                    document.write("<br />");
+                }
+            }
+    
+        </script>
+    </body>
+
+
+</html>

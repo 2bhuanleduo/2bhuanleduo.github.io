@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>实验室成员-清史数据共享平台</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="normal.css">
+        <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="jq.js"></script>
+        <style>
+            .container p{
+                text-indent:2em;
+            }
+        </style>
+    </head>    
+
+    <body>
+
+        <div class="container" style="position:relative;">
+            <div class="bgPic" style="height:100px;">
+                <div class="text-right" style="padding-top: 10px;">
+                    <a href="loginAndSignup.html" target="_blank" class="signInUp">登录</a>
+                    <a href="loginAndSignup.html" target="_blank" class="signInUp">注册</a>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-expand-md">
+                <ul class="navbar-nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="首页.html" class="nav-link text-white">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="labIntroduction.html" class="nav-link text-white">实验室介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="labMembers.html" class="nav-link active bg-secondary text-white">实验室成员</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="labPerformace.html" class="nav-link text-white">实验室动态</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="resourceCatalog.html" class="nav-link text-white">资源目录</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="integratedRetrieval.html" class="nav-link text-white">综合检索</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="dataUpload.html" class="nav-link text-white">上传资料</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="dataNavigation.html" class="nav-link text-white">数据导航</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="copyright.html" class="nav-link text-white">版权声明</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact_us.html" class="nav-link text-white">联系我们</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="container  oneForAll">
+            <h6><strong>成员列表</strong></h6>
+            <hr>
+        </div>
+
+
+        <div class="container oneForAll">
+            <!-- <div class="row">
+                <div class="col-md-2 bg-danger">            
+                    <li style="list-style: none;" >学术顾问：</li>
+                </div>
+                <div class="col-md-5 bg-danger">            
+                    <li style="list-style: none;" >陈志武（香港大学经济与工商管理学院、亚洲环球研究所）</li>
+                </div>
+                <div class="col-md-5 bg-danger">            
+                    <li style="list-style: none;" >华林甫（中国人民大学清史研究所）</li>
+                </div>
+                <div class="col-md-5 offset-md-2 bg-primary">            
+                    <li style="list-style: none;" >黄兴涛（中国人民大学历史学院、清史研究所）</li>
+                </div>
+                <div class="col-md-5 bg-primary">            
+                    <li style="list-style: none;" >康文林（香港科技大学人文社会科学学院）</li>
+                </div>
+                <div class="col-md-5 offset-md-2 bg-primary">            
+                    <li style="list-style: none;" >李中清（香港科技大学人文社会科学学院）</li>
+                </div>
+                <div class="col-md-5 bg-primary">            
+                    <li style="list-style: none;" >龙登高（清华大学社会科学学院）</li>
+                </div>
+                <div class="col-md-5 offset-md-2 bg-primary">            
+                    <li style="list-style: none;" >马德斌（伦敦政治经济学院经济史学系）</li>
+                </div>
+                <div class="col-md-5 bg-primary">            
+                    <li style="list-style: none;" >夏明方（中国人民大学清史研究所）</li>
+                </div>
+                <div class="col-md-5 offset-md-2 bg-primary">            
+                    <li style="list-style: none;" >朱   浒（中国人民大学清史研究所）</li>
+                </div>
+            
+            </div> -->
+            <!--表格形式-->
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>学术顾问</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><li style="list-style: none;" >陈志武（香港大学经济与工商管理学院、亚洲环球研究所）</li></td>
+                        <td><li style="list-style: none;" >华林甫（中国人民大学清史研究所）</li></td>
+                        <td><li style="list-style: none;" >黄兴涛（中国人民大学历史学院、清史研究所）</li></td>
+                    </tr>
+                    <tr>
+                        <td><li style="list-style: none;" >康文林（香港科技大学人文社会科学学院）</li></td>
+                        <td><li style="list-style: none;" >李中清（香港科技大学人文社会科学学院）</li</td>
+                        <td><li style="list-style: none;" >龙登高（清华大学社会科学学院）</li></td>
+                    </tr>
+                    <tr>
+                        <td><li style="list-style: none;" >马德斌（伦敦政治经济学院经济史学系）</li></td>
+                        <td><li style="list-style: none;" >夏明方（中国人民大学清史研究所）</li></td>
+                        <td><li style="list-style: none;" >朱   浒（中国人民大学清史研究所）</li></td>
+                    </tr>
+
+                </tbody>
+
+                <thead>
+                    <th>研究成员</th>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td><a href="#" class="btn hh">胡   恒（中国人民大学清史研究所）</a></td>
+                        <td><a href="#" class="btn lz">林   展（中国人民大学清史研究所）</a></td>
+                        <td><a href="#" class="btn xlb">萧凌波（中国人民大学清史研究所）</a></td>
+                    </tr>
+                </tbody>
+
+                <thead>
+                    <th>技术支持</th>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><a href="#" class="btn active hd">胡   迪（南京师范大学地理科学学院）</a></td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <hr>
+        </div>
+        <div class="HD">
+            <div class="container  oneForAll">
+                <h6><strong>成员介绍</strong></h6>
+                <hr>
+            </div>
+
+            <div class="container oneForAll">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="pic/清史所-9.jpg" alt="胡迪老师" style="width:140px;height:160px;">
+                    </div>
+
+                    <div class="col-md-5 offset-md-1">
+                        <li style="list-style: none;"><strong>胡迪</strong></li>
+                        <li style="list-style: none;">职称：副教授</li>
+                        <li style="list-style: none;">研究方向：时空数据模型、地理信息服务、历史文化GIS。</li>
+                        <li style="list-style: none;">Email：hud316@gmail.com</li>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
+
+            <div class="container oneForAll">
+                <h6><strong>研究方向</strong></h6>
+                <p>研究方向为时空数据模型、地理信息服务、历史文化GIS。</p>
+                <h6><strong>教育背景</strong></h6>
+                <p>2007年9月——2012年6月     南京师范大学地理科学学院地图学与地理信息系统专业研究生（硕博连读）</p>
+                <p>2003年9月——2007年6月     东北师范大学城市与环境科学学院地理信息系统专业本科生</p>
+                <h6><strong>工作经历</strong></h6>
+                <p>2012年8月——2017年6月     南京师范大学地理科学学院讲师</p>
+                <p>2017年6月——至今　　　     现为南京师范大学地理科学学院副教授</p>
+                <h6><strong>承担项目</strong></h6>
+                <p>1. 国家自然科学基金面上项目. 历史地理信息时空建模与定位方法研究（41771421，2018.1-2021.12）, 63万, 主持.</p>
+                <p>2. 子课题-多粒度时空对象表达模型(211110B61604-2) , 20万, 主持.</p>
+                <p>3. 虚拟地理环境教育部实验室、地图学与地理信息系统国家重点学科资助项目. 华夏家谱地理信息系统（GIS）研究. 2007年—2009年作为核心人员参与研发，2009年至今全面负责相关工作.</p>
+                <p>4. 国家重点研发计划课题. 时空信息共享与集成技术方法标准研制（2016YFF0201304，2016.6-2019.12）, 60万, 参与.</p>
+                <p>5. 国家自然科学基金青年基金项目. 异构地理分析模型的服务化封装方法研究（41301414，2014.1-2016.12）, 25万, 主持.</p>
+                <p>6. 江苏省基础研究计划（自然科学基金）项目. 地理分析模型的流程化服务模式研究（BK20130904，2013.7-2016.6）, 18万, 主持.</p>
+                <p>7. 南京师范大学地理学优势学科建设科研项目. GIS支持下的硃卷数据组织与管理（2013.7-2015.6）, 4万，主持.</p>
+                <p>8. 教育部人文社会科学研究一般项目. 统一时空框架下的古籍解析与古籍GIS原型系统构建——以《读史方舆纪要》为例（12YJCZH132，2013-2015）, 7万, 排名3.</p>
+                <p>9. 国家自然科学基金重点项目. 面向地理问题求解的分布式建模环境研究(40730527，2008.1-2011.12) , 180万, 参与.</p>
+                <p>10.国家自然科学基金青年基金项目. 基于矢量元胞自动机和多主体的区域LUCC建模与模拟（41101349，2012.1-2015.12）, 23万, 排名3.</p>
+                <h6><strong>发表论文</strong></h6>
+                <p>1.He Handong, Hu Di*, Lv Guonian. GIS Application to Regional Geological Structure Relationship Modelling Considering Semantics. ISPRS Int. J. Geo-Inf., 2018, 7(7): 267. doi: 10.3390/ijgi7070267. (SCI收录)</p>
+                <p>2.胡迪, 闾国年, 江南, 等. 地理与历史双重视角下的历史GIS数据模型. 地球信息科学学报. 2018, 20(6): 713-720.</p>
+                <p>3.胡昊宇, 胡迪*, 程星华, 等. 面向公众的三国历史WebGIS设计与实现. 南京师范大学学报(工程技术版). 2018, 18(1): 71-78.</p>
+                <p>4.程星华, 胡迪*, 俞肇元, 等. 政区多粒度时空对象建模及其Geodatabase实现. 地球信息科学学报. 2017, 19(9): 1228-1237.</p>
+                <p>5.何撼东, 胡迪*, 闾国年, 等. 几何与语义统一的区域地质构造GIS数据模型. 测绘学报. 2017, 8. (EI收录)</p>
+                <p>6.Liu Longyu, Hu Di. Study on the construction of historical toponymic information management system for Essence of the Geographical Content of the History Books. Annals of GIS, 2017(6):1-11.</p>
+                <p>7.Jiang Nan, Hu Di. GIS for History: An Overview[M]// Huang Bo. Comprehensive Geographic Information Systems. Netherlands:Elsevier, 2018: 101-109. doi: 10.1016/B978-0-12-409548-9.09726-8.</p>
+                <p>8.Zhang Zhuo, Peng Guoqiang, Guo Fei, Hu Di*, Huang Changchun. The key technologies for eutrophication simulation and algal bloom prediction in lake Taihu, China. Environmental Earth Sciences, 2016, 75: 1295-1310. (SCI收录)</p>
+                <p>9.Hu Di, Ma Shaosong, Lv Guonian, et al. Describing data formats of geographical models. Environ Earth Sci. 2015, 74(10): 7101-7115.doi: 10.1007/s12665-015-4737-4. (SCI收录)</p>
+                <p>10.胡迪. 地理模型的服务化封装方法研究. 测绘学报. 2015, 44(11): 1298. doi: 10.11947/j.AGCS.2015.20150291. (EI收录)</p>
+                <p>11.刘龙雨, 胡迪. 《读史方舆纪要》数据库建设中地名解析的原则与方法.江苏科技大学学报 (社会科学版). 2014, 14(4): 29-34.</p>
+                <p>12.Hu Di, Lv Guonian, Wen Yongning, et al. GIS-based family tree system integration. In: Proc. of the 2011 IEEE International Conference on Spatial Data Mining and Geographical Knowledge Services. IEEE Press, 2011: 480-485. (EI收录)/p>
+                <p>13.Hu Di, Lv Guonian, Wen Yongning, et al. GIS-based family tree information sharing and service. In: Proc. of the 18th International Conference on Geoinformatics. IEEE Press, 2010. (EI收录)</p>
+                <p>14.胡迪, 温永宁, 闾国年, 沈敬伟. 基于GIS的家谱资源整合集成研究. 人文地理, 2012, 27(1): 50-53. (CSSCI收录).</p>
+                <p>15.胡迪, 闾国年, 林伯工, 温永宁. 面向GIS的硃卷履历数据组织与采集. 计算机工程, 2012,38(9):24-27.</p>
+                <p>16.胡迪，闾国年，温永宁，林伯工. 我国方言地理学发展演变及问题分析. 南京师大学报（自然科学版）, 2012,35(3):106-110.</p>
+                <p>17.闾国年, 陈旻, 温永宁, 胡迪, 杨翼. 华夏家谱GIS平台构建研究. 见：第一届空间综合人文学与社会科学研究. 北京: 科学出版社, 2010:114-127.</p>
+                <p>18.温永宁, 闾国年, 陈旻, 苏红军, 胡迪. 华夏家谱GIS的数据组织与系统架构. 地球信息科学学报, 2010,12(2):235-241.</p>
+                <h6><strong>专利、软件著作权</strong></h6>
+                <p>1.胡迪, 贺力, 闾国年, 刘龙雨. 一种中国历史典籍信息的空间集成方法. 国家发明专利（专利号：ZL 2015 1 0051362.8, 2018.4.24）</p>
+                <p>2.胡迪, 闾国年,温永宁, 盛业华. 基于代码分析的计算模块输入输出数据自动解析方法. 国家发明专利（专利号: ZL 2011 1 0457068.9, 2014.5.28）</p>
+                <p>3.闾国年, 胡迪, 温永宁, 盛业华. 一种数据格式的描述方法. 国家发明专利（专利号：ZL 2012 1 0159900.1, 2015.8.5）</p>
+                <h6><strong>学术会议</strong></h6>
+                <p>1.The 6th International Conference on Asian Network of GIS0-based Historical Studies (ANGIS2017). Gangzhou: Sun Yat-sen University, 2017.11.24-25.</p>
+                <p>2.2017年中国地理信息科学理论与方法学术年会. 长沙：中南大学, 2017.11.17-19.</p>
+                <p>3.结网织史：历史中的联系及其再现学术研讨会. 北京：中国人民大学, 2017.10.13-15.</p>
+                <p>4.The 28th Internatioanl Cartographic Conference (ICC2017). Washinggon, DC, USA, 2017.6.30-7.4.</p>
+                <p>5.第三届历史地理信息系统（HGIS）沙龙. 广州：华南师范大学, 2017.4.7-9.</p>
+                <p>6.历史空间信息与中国长城防御体系国际研讨会. 天津：天津大学, 2016.11.18-22.</p>
+                <p>7.中文古籍整理与版本目录学国际研讨会. 广州：中山大学图书馆, 2016.11.7-10.</p>
+                <p>8.数字人文与清史研究学术工作坊. 北京：中国人民大学, 2016.5.28-29.</p>
+                <p>9.第二届历史地理信息系统（HGIS）沙龙. 西安：陕西师范大学, 2016.4.9-10.</p>
+                <p>10.The 4th International Conference on Asian Network for GIS-based Historical Studies. Taiwan: The Research Center for Humanities and Social Science, Academia Sinica, 2015.12.4-6.</p>
+                <p>11.第一届历史地理信息系统（HGIS）沙龙. 上海：复旦大学, 2015.4.25.</p>
+                <p>12.International Conference of Geo-Process Modeling in VGE: Managing and Sharing Geographic Knowledge. Hong Kong：The Chinese University of Hong Kong,2014.11.6-8</p>
+                <p>13.2014年中国人文地理学术年会. 长沙：湖南师范大学, 2014.10.17-19.</p>
+                <p>14.第六届空间综合人文学与社会科学论坛. 武汉：华中师范大学, 2015.6.21-23.</p>
+                <p>15.第五届空间综合人文学与社会科学论坛. 北京：北京大学, 2014.6.28-29.</p>
+                <p>16.第四届空间综合人文学与社会科学论坛. 开封：河南大学, 2013.6.18-19.</p>
+                <p>17.第三届空间综合人文学与社会科学论坛. 台湾：台湾大学, 2011.10.18-19.</p>
+                <p>18.第二届空间综合人文学与社会科学论坛. 南京：南京师范大学, 2010.10.15-17.</p>
+                <p>19.第一届空间综合人文学与社会科学论坛. 香港：香港中文大学, 2009.3.16-17.</p>
+                <p>20.第二届中华大族谱国际会议. 南京：南京师范大学, 2010.12.3-5.</p>
+                
+                <hr>
+            </div>
+        </div>
+
+        <div class="HH" style="display:none">
+            <div class="container  oneForAll">
+                <h6><strong>成员介绍</strong></h6>
+                <hr>
+            </div>
+
+            <div class="container oneForAll">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="pic/huheng.jpg" alt="胡恒老师" style="width:140px;height:160px;">
+                    </div>
+
+                    <div class="col-md-5 offset-md-1">
+                        <li style="list-style: none;"><strong>胡恒</strong></li>
+                        <li style="list-style: none;">职称：副教授</li>
+                        <li style="list-style: none;">中国历史地理学、清史、基层组织史、古地图等领域，近年来也逐渐关注GIS、数据库等数字人文方法在史学研究中的应用。</li>
+                        <li style="list-style: none;">Email:huhengqss@ruc.edu.cn</li>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
+
+            <div class="container oneForAll">
+                <h6><strong>研究方向</strong></h6>
+                <p> 主要研究兴趣在中国历史地理学、清史、基层组织史、古地图等领域，近年来也逐渐关注GIS、数据库等数字人文方法在史学研究中的应用。</p>
+                <h6><strong>教育背景</strong></h6>
+                <p>2009年9月——2009年11月   赴台湾政治大学访学</p>
+                <p>2008年9月——2011年6月     中国人民大学博士学习</p>
+                <p>2006年9月——2008年6月     中国人民大学研究生学习</p>
+                <p>2002年9月——2006年6月     中国人民大学本科学习</p>
+                <h6><strong>工作经历</strong></h6>
+                <p>现任中国人民大学清史研究所副所长，历史地理研究中心副主任</p>
+                <h6><strong>获奖情况</strong></h6>
+                <p>2008年中国人民大学校级优秀硕士论文</p>
+                <p>2011年谭其骧禹贡基金会“第四届优秀青年历史地理论著奖”二等奖</p>
+                <p>2012年中国人民大学校级优秀博士论文</p>
+                <p>2015年中国人民大学校级优秀工作者</p>
+                <h6><strong>书籍编撰</strong></h6>
+                <p>《皇权不下县？——清代县辖政区与基层社会治理》,杨念群主编的“新史学＆多元对话系列”丛书之一，北京师范大学出版社，2015年6月出版</p>
+                <p>《清史书目（1911-2011）》,副主编之一，中国人民大学出版社，2014年出版</p>
+                <p>《中国省制演进与未来》（四作），东南大学出版社，2016年出版</p>
+                <h6><strong>学术兼职</strong></h6>
+                <p>中国人民大学清史研究所副所长，历史学院历史地理学研究中心副主任</p>
+                <p>《清史研究》编委、责任编辑</p>
+                <p>《新史学》集刊学术秘书</p>
+                <h6><strong>承担项目</strong></h6>
+                <p>1.主持：国家社科基金青年项目“清代县辖政区与基层社会管理研究”，结项；</p>
+                <p>2.国家社科基金青年项目“清代地方行政的制度变迁与空间结构研究”，在研。</p>
+                <p>3.另主持中国人民大学科学研究基金项目新教师启动金、面上项目、团队培育项目各一项，均结项。</p>
+                <p>4.参与：重要的有国家清史编纂委员会《清史·地理志》，国家社科基金重大项目《清史地图集》等。</p>
+                <h6><strong>发表论文、评论</strong></h6>
+                <p>1.《读<临江之麋>偶识》，《古典文学知识》2008年第6期</p>
+                <p>2.《<清史稿•地理志>巡检司项校正》，《中国历史地理论丛》2009年第3辑，修订版收入华林甫主编《清代政区地理初探》，北京联合出版公司，2015年</p>
+                <p>3.《<清史稿•地理志>政区断代考》，《书品》2009年第4期</p>
+                <p>4.《清代巡检司及其时空分布特征初探》，《史学月刊》2009年第11期（人大复印报刊资料《明清史》2010年第5期全文转载）</p>
+                <p>5.《<清史稿•地理志>纂修考》，《文史》2011年第1辑（该文获谭其骧禹贡基金会“第四届优秀青年历史地理论著奖”二等奖，获奖名单刊载于《历史地理》第二十六辑），修订版收入华林甫主编《清代政区地理初探》，北京联合出版公司，2015年</p>
+                <p>6.《关于清代县的裁撤的考察——以山西四县为中心》，《清史研究》2011年第2期（人大复印报刊资料《明清史》2011年第8期全文转载）</p>
+                <p>7.《宋代三位史炤》，《中华文史论丛》2011年第2期</p>
+                <p>8.《<英国国家档案馆庋藏近代中文舆图>评介》，《地理研究》2011年第2期</p>
+                <p>9.《清代佐杂的新动向与乡村治理的实际——质疑“皇权不下县”》，载杨念群主编《新史学》第五卷“清史研究的新境”，中华书局，2011年10月</p>
+                <p>10.《清代福建分征县丞与钱粮征收》，《中国社会经济史研究》2012年第2期</p>
+                <p>11.《厅制起源及其在清代的演变》，《文史》2013年第2辑（人大复印报刊资料《明清史》2013年第8期全文转载;《历史学文摘》2013年第3期摘录文章主要内容），修订版收入华林甫主编《清代政区地理初探》，北京联合出版公司，2015年</p>
+                <p>12.《清代甘肃分征佐贰与州县分辖》，《史学月刊》2013年第6期</p>
+                <p>13.《<清史稿·地理志>专题校正之二：佐贰、首领官项》，载华林甫主编《清代地理志书研究》，中国人民大学出版社，2014年5月</p>
+                <p>14.《题新见明末清初彩绘本<阅史津逮>》, 载华林甫主编《清代地理志书研究》，中国人民大学出版社，2014年5月</p>
+                <p>15.《清代江南佐杂分防与市镇管理献疑——以苏松二府为例》，载刘昶、陆文宝主编《水乡江南：历史与文化论集》，上海古籍出版社，2014年</p>
+                <p>16.《<资治通鉴>注本胡三省蹈袭史炤问题再审———以先秦、汉魏纪部分为中心》,《历史文献研究》总第33辑，2014年</p>
+                <p>17.《清代台湾“南雅厅”建置考》，《台湾研究集刊》2014年第3期</p>
+                <p>18.《清代太湖厅建置沿革及其行政职能变迁考实》，《苏州大学学报》（哲社版）2014年第5期（人大复印报刊资料《明清史》2014年第12期全文转载）</p>
+                <p>19.《甲午前后古地图证实钓鱼岛属中国》，《参考消息》2014年8月7日</p>
+                <p>20.《“司”的设立与明清广东基层行政》，《清史研究》2015年第2期</p>
+                <p>21.《“皇权不下县”的由来及反思》，《中华读书报》2015年11月4日第5版</p>
+                <p>22.《清代北京的“城属”与中央直管区》，《开发研究》2016年第2期（人大复印报刊资料《明清史》2016年第8期全文转载）</p>
+                <p>23.《<청사지도집>의편찬이론과실제》（《<清史地图集>的编纂理论与实践》），收入《역사지도집 편찬에 관한 국제 학술회의》，2016年</p>
+                <p>24.《<台湾地舆总图>与光绪<会典•舆图>关系考实》，载华林甫主编《清史地理研究·二集》，上海古籍出版社，2016年</p>
+                <p>25.《“犬牙相入”的地方性实践：清代湘黔边界争端与晃州厅的设置》，收入杨念群主编《澹澹清川：戴逸先生九秩华诞纪念文集》，中国人民大学出版社，2016年</p>
+                <p>26.《<德国普鲁士文化遗产图书馆藏晚清直隶山东县级舆图整理与研究>评介》，《地图》2016年第7期</p>
+                <p>27.《数据库建设与清史研究》，“数字人文与清史研究”专栏，《清史研究》2016年第4期</p>
+                <p>28.古地图与边界问题相关的报告一份（题目略），《问题与思路》（人大主办）2014年6月27日，国家哲学社会科学办公室《成果要报》2014年第51期全文转载（此篇为政策报告）</p>
+                
+                <hr>
+            </div>
+        </div>
+
+        <div class="LZ" style="display:none">
+            <div class="container  oneForAll">
+                <h6><strong>成员介绍</strong></h6>
+                <hr>
+            </div>
+
+            <div class="container oneForAll">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="pic/lz.png" alt="林展老师" style="width:140px;height:160px;">
+                    </div>
+
+                    <div class="col-md-5 offset-md-1">
+                        <li style="list-style: none;"><strong>林展</strong></li>
+                        <li style="list-style: none;">职称：讲师</li>
+                        <li style="list-style: none;">研究方向：近现代经济史、量化历史、金融史。</li>
+                        <li style="list-style: none;">Email：zhan.lin@ruc.edu.cn</li>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
+
+            <div class="container oneForAll">
+                <h6><strong>研究方向</strong></h6>
+                <p> 主要研究兴趣为近现代经济史、量化历史、金融史。</p>
+                <h6><strong>教育背景</strong></h6>
+                <p>2009年9月——2014年7月     清华大学社会科学学院，理论经济学硕士、博士（提前攻博），期间赴耶鲁大学管理学院访学</p>
+                <p>2003年9月——2007年7月     北京林业大学法学系，法学学士</p>
+                <h6><strong>工作经历</strong></h6>
+                <p>现为中国人民大学清史研究所讲师。</p>
+                <h6><strong>学术任职</strong></h6>
+                <p>《清史研究》编辑部责任编辑</p>
+                <p>清华大学华商研究中心研究员</p>
+                <p>“量化历史研究”微信公众号轮值主编</p>
+                <h6><strong>承担项目</strong></h6>
+                <p>1.主持：中国博士后科学基金面上资助项目：“合约选择与农业生产效率的实证分析（1930-1945）”（资助编号2015M580158），已结项。</p>
+                <p>2.参与：国家社会科学基金重大项目“清末民国社会调查数据库建设”、中国人民大学“985”工程重大攻关项目“中华民国编年史”等。</p>
+                <h6><strong>发表论文、译稿</strong></h6>
+                <p>1.林展、陈志武、彭凯翔：“乾隆中期和道光中后期的债务命案研究”，《清史研究》2016年第2期。</p>
+                <p>2.林展：“新世纪中国的史料整理与人文社会科学研究”，《光明日报》史学理论版，2016年4月6日。</p>
+                <p>3.林展、陈志武：“土地抵押权与发展农村金融—基于历史交易合约的实证研究”，《金融论坛》2015年第8期。</p>
+                <p>4.林展、陈志武：“阶级身份、互联性交易、季节性与民间借贷：基于民国时期北方农村家计调查”，《清华大学学报》（哲学社会科学版）2015年第5期。</p>
+                <p>5.陈志武、林展、彭凯翔：“民间金融中的暴力冲突：清代债务命案研究”，《经济研究》2014年第9期。</p>
+                <p>6.龙登高、潘庆中、林展：“高利贷的前世今生”，《思想战线》2014年第4期。</p>
+                <p>7.龙登高、林展、彭波：“典与清代地权交易体系”，《中国社会科学》2013第5期。</p>
+                <p>8.陈志武、林展：“真命天子易丧命？中国历代皇帝非正常死亡的量化分析与东西方比较”。</p>
+                <p>9.云妍、陈志武、林展：“清代官绅家庭资产结构一般特征初探—以抄产档案为中心的研究”。</p>
+                <p>10.陈志武、何石军、林展、彭凯翔：“清代妻妾价格研究—传统社会里女性如何被用作避险资产？”</p>
+                <p>11.罗威廉著，林展译：“在美国书写清史”，《清史研究》2015年第2期。</p>
+                
+                <hr>
+            </div>
+        </div>
+
+        <div class="XLB" style="display:none">
+            <div class="container  oneForAll">
+                <h6><strong>成员介绍</strong></h6>
+                <hr>
+            </div>
+
+            <div class="container oneForAll">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="pic/xlb.png" alt="萧凌波老师" style="width:140px;height:160px;">
+                    </div>
+
+                    <div class="col-md-5 offset-md-1">
+                        <li style="list-style: none;"><strong>萧凌波</strong></li>
+                        <li style="list-style: none;">职称：讲师</li>
+                        <li style="list-style: none;">研究方向：历史自然地理（集中于历史时期气候变化及其社会影响）、灾害史、环境史。</li>
+                        <li style="list-style: none;">Email：xlingbo1@163.com</li>
+                    </div>
+                </div>
+
+                <hr>
+            </div>
+
+            <div class="container oneForAll">
+                <h6><strong>研究方向</strong></h6>
+                <p> 主要研究兴趣：历史自然地理（集中于历史时期气候变化及其社会影响）、灾害史、环境史。</p>
+                <h6><strong>教育背景</strong></h6>
+                <p>2011年11月——2014年7月   中国科学院地理科学与资源研究所博士后流动站工作</p>
+                <p>2009年7月——2011年10月   北京师范大学历史学院博士后流动站工作</p>
+                <p>2006年9月——2009年6月     北京师范大学地理学与遥感科学学院博士学习</p>
+                <p>2003年9月——2006年6月     北京师范大学地理学与遥感科学学院研究生学习</p>
+                <p>1999年9月——2003年6月     北京师范大学资源与环境科学系本科学习</p>
+                <h6><strong>教学工作</strong></h6>
+                <p>2015年开始负责中国人民大学清史研究所研究生课程《中国历史自然地理研究》的教学工作，并面向全校本科生开设《气候改变历史》选修课。</p>
+                <p>2008-2012年，参与北京师范大学地理学与遥感科学学院本科生《全球变化》、研究生《中国自然环境演变》课程的部分教学工作。</p>
+                <p>2009年，参与北京师范大学历史学院研究生世界史、环境史课程的部分教学工作，作题为《人类与自然世界——曾经的信心与现实的困境》专题报告。</p>
+                <h6><strong>学术经历</strong></h6>
+                <p>自本科毕业（2003年）以来，一直以气候变化为线索，在历史地理学的大框架下开展研究工作。早期主要研究方向为历史时期气候变化的重建（以古人日记为数据源）；之后转向历史时期气候变化、水旱灾害的社会影响与响应机制研究，主要研究时段为晚明至清代；同时参与环境史的一部分教学与科研工作。至今已承担或参与十余项国家级、部级科研项目；参与编写学术专著3部；在国内外高水平期刊上发表论文20余篇，其中以第一作者或通讯作者身份发表SCI/SSCI论文5篇、国内核心期刊论文8篇。</p>
+                <p>主要研究手段：从历史官私文献记录中提取反映气候变化、自然灾害、社会经济等方面的文字记录，利用Excel、Access等软件进行录入、分类和管理；基于一定技术手段（如语意判别、频次统计），将文字记录转换为可供定量分析和矢量成图的数字化信息；再通过时空成图，直观描述并对比分析历史上气候变化与人类社会之间的互动机制。</p>
+                <h6><strong>书籍编撰</strong></h6>
+                <p>2007-2012年，参与《中国自然地理系列专著·中国古地理（中国自然环境的形成）》（张兰生、方修琦主编，科学出版社2012年6月一版）的编写工作，主要承担第10章“古陆块抬升与东部低山丘陵地理环境的演变与形成”的撰写，并参与其他章节的修订。</p>
+                <p>2006年，参与《过去300年中国土地利用变化与碳收支》（葛全胜等主编，科学出版社2008年3月一版）第五章“过去50年中国土地利用与土地覆被变化”的编写。</p>
+                <p>2007年，参与《地球系统研究与科学数据》（孙九林、林海主编，科学出版社2009年3月一版）第六章第一节“人类活动对地球系统的影响与响应”的编写。</p>
+                <h6><strong>学术任职</strong></h6>
+                <p>2011年11月至2014年7月在中国科学院地理科学与资源研究所博士后研究工作其间曾兼职担任学术期刊《地理科学进展》编辑。</p>
+                <h6><strong>承担项目</strong></h6>
+                <p>1.国家自然科学基金青年项目“气候变化、极端灾害对清代华北粮食安全的影响及其时空差异分析”（编号：41501207，年限2016-2018），项目负责人。</p>
+                <p>2.中国人民大学决策咨询及预研委托项目团队培育计划项目“清代华北典型水旱灾害案例重建及时空对比”（编号：15XNQ014，年限2015-2016），项目负责人。</p>
+                <p>3.中国人民大学新教师启动金项目“17-19世纪华北气候变化、极端灾害与社会动乱的关系及其时空差异”（编号：15XNLF13，年限2015-2017），项目负责人。</p>
+                <p>4.国家社会科学基金重大项目“清代灾荒纪年暨信息集成数据库建设”（编号：13&ZD092，年限2014-2018），一般参与者，协助数据库建设工作。</p>
+                <p>5.国家重点基础研究发展计划（973计划）“过去2000年全球典型暖期的形成机制及其影响研究”（编号：2010CB950100，年限：2010-2014），参与申请书、任务书起草，主要承担明清时期华北地区气候变化影响研究。</p>
+                <p>6.国家自然科学基金面上项目“清代华北平原气候变化难民潮的时空变化” （41071127，2011-2013），作为第二承担人参与申请书撰写，负责社会经济代用指标序列重建及分析工作。</p>
+                <p>7.国家自然科学基金面上项目“中国历史气候与社会系统周期变化的协同效应分析”（41371201，2014-2017），第三承担人，负责协同效应分析研究。</p>
+                <p>8.北京师范大学自主科研基金“近现代华北地区现代化进程的环境史研究”（2009AC-1），一般参与者。</p>
+                <p>9.另主持中国人民大学科学研究基金项目新教师启动金、面上项目、团队培育项目各一项，均结项。</p>
+                <p>10.“过去300年农垦区扩张与现代农牧交错带东段的形成”（40901099）。</p>
+                <p>11.“中国全新世环境演变的集成研究”（40771211）。</p>
+                <p>12.“东北地区过去300年土地覆盖空间格局变化研究”（40571165）。</p>
+                <p>13.“过去300年中国东部季风区雨带进退图谱与模拟诊断”（40331013）。</p>
+                <p>14.“人类适应气候变化的过程与机理的实证研究”（40271115）。</p>
+                <p>15.中科院知识创新工程基金项目：“过去2000年东亚季风气候演变及其与人类相互作用研究”（KZCX2-YW-315）；“历史时期环境变化的重件复原及其影响研究”（KZCX3-SW-321）。</p>
+                <h6><strong>发表论文</strong></h6>
+                <p>1. Famine, migration and war: Comparison of climate change impacts and social responses in North China between the late Ming alate Qing dynasties （饥荒、迁徙与战争：晚明与晚清华北气候变化对社会的影响与响应对比研究），Holocene，2015，25（6）（第一作（SCI）</p>
+                <p>2. How climate change impacted the collapse of the Ming dynasty （气候变化对明朝灭亡的影响），Climatic Change，2014，总第12（第二作者）（SCI）</p>
+                <p>3. Climatic impacts on the rise and decline of0020“Mulan Qiuxian” and “Chengde Bishu” in North China, 1683-1820（气候变化代木兰秋狝及承德避暑活动兴衰的影响），Journal of Historical Geography，2013，39（1）（第一作者、通讯作者）（SCI）</p>
+                <p>4. Reclamation and revolt: Social responses in Eastern Inner Mongolia to flood/drought-induced refugees from North China Pladuring 1644-1911（从垦殖到动乱：清代东蒙对华北平原水旱灾害难民迁徙的社会响应），Journal of Arid Environments，2013，88（（第一作者、通讯作者）（SCI）</p>
+                <p>5. Social Impacts of Climatic Shift during the decades around1800 inNorth China Plain，Science China: Earth Sciences， 201（6）/ 18～19世纪之交华北平原气候转冷的社会影响及其发生机制，中国科学：地球科学，2013，43（5）（第二作者、通讯作（SCI）</p>
+                <p>6. Multi-stage evolution of social response to flood drought in the North China Plain during 1644–1911（清代华北平原水旱灾害社会的阶段性变化），Regional Environmental Change，2014，14（2）（第一作者、通讯作者）（SCI）</p>
+                <p>7.清代气候变化的社会影响研究：进展与展望（第一作者），中国历史地理论丛，2016，（2）</p>
+                <p>8.清代华北平原灾害赈粮调度数量的时空变化（第二作者），地球环境学报，2014，5（6）</p>
+                <p>9.1766年以来黄河中游与永定河汛期径流量的变化（第三作者），地理学报，2013，68（7）</p>
+                <p>10. 1766年以来永定河汛期径流量与太平洋年代际振荡（第二作者），中国历史地理论丛，2013，28（1）</p>
+                <p>11. 华北1743-1744与1876-1878年旱灾中的政府粮食调度与社会后果对比（第一作者），灾害学，2012，27（1）</p>
+                <p>12.Revolts Frequency during 1644-1911 inNorth China Plain and Its Relationship with Climate（第一作者），Advances in ClimChange Research，2011，2（4）</p>
+                <p>13.清代东蒙农业开发的消长及其气候变化背景（第一作者），地理研究，2011，30（10）</p>
+                <p>14.1780-1819年华北平原水旱灾害社会响应方式的转变（第一作者），灾害学，2011，26（3）</p>
+                <p>15. 气候变化与清代华北平原动乱事件（第一作者），气候变化研究进展，2011，7（4）</p>
+                <p>16.19世纪后半叶至20世纪初叶梅雨带位置的初步推断（第一作者），地理科学，2008，28（3）</p>
+                <p>17.青海东部高庙盆地史前文化聚落演变与气候变化（第三作者），地理学报，2008，63（1）</p>
+                <p>18.中国古代土地开发的环境认知基础和相关行为特征（第二作者），陕西师范大学学报（哲学社会科学版），2007，36（5）</p>
+                <p>19.《湘绮楼日记》记录的湖南长沙1877-1878年寒冬（第一作者），古地理学报，2006，8（2）</p>
+                <p>20. 湖南长沙、衡阳地区1888-1916年的春季植物物候与气候变化（第二作者），第四纪研究，2005，25（1）</p>
+                <h6><strong>参加学术会议</strong></h6>
+                <p>1.2009年10月，参加中国地理学会百年庆典暨2009年学术年会（北京），作题为《清代东蒙地区对华北平原水旱灾害的异地响应及其影响因素探讨》6>的学术报告。</p>
+                <p>2.2010年7月，参加在以色列特拉维夫召开的国际地理联合会（IGU）年会。</p>
+                <p>3.2011年7月，参加中国地理学会2011年学术年会（乌鲁木齐），作题为《清代木兰秋狝与承德避暑活动的兴衰及其气候影响》的学术报告，并参与6>另外两个学术报告的起草。</p>
+                <p>4.2012年10月，参加中国地理学会2012年学术年会（开封），参与起草题为《清代华北平原水旱灾害背景下的政府粮食调度序列重建》的学术报告；6>会后在河南、山东、河北等省考察黄河故道及其历史时期决溢情况。</p>
+                <p>5.2014年10月，参加第二届史念海青年历史地理学者论坛（西安），做题为《1470-1911年华北气候变化、极端灾害的社会影响及晚明与晚清的对比6>研究》的学术报告。</p>
+                <p>6.2016年5月，参加“数字人文与清史研究”工作坊（北京），作题为《煮赈、治安与动乱：晚清华北平原水旱灾害中政府与难民的消极互动》的学术6>报告。</p>
+                <p>7.2016年8月，参加在北京召开的国际地理联合会（IGU）年会。</p>
+                <p>8.2016年11月，参加中国灾害防御协会灾害史专业委员会第十三届年会暨“江南灾害与社会变迁”学术研讨会（上海），作题为《清代主要自然灾害的时空分布特点初探——基于《清史•灾赈志》的统计分析》的学术报告。</p>
+                <h6><strong>参加学术会议</strong></h6>
+                <p>1.2007年秋-2008年夏，参加人民大学历史与社会高等研究所黄宗智教授举办的首届“社会、经济与法律的历史学研究”研修班。</p>
+                <p>2.2008年以来，先后在《中国国家地理》杂志上发表《谁在改变地球表面——北京的建筑地貌》（2008.08）、《罗布泊是否曾经“游移”》（2009.10）、《沿着峡谷穿越燕山》（2012.09）、《中国有宜居城市吗》（2013.11）等多篇科普性质文章。</p>
+                <p>3.2015年底，受聘于中央文史研究馆，担任文史馆馆员、国家清史编纂委员会主任戴逸先生的助手，主要工作为联络沟通、协助清史及个人文集的编纂及其他一些日常事务的处理，为期一年。</p>
+                <hr>
+            </div>
+        </div>
+
+        <div class="container oneForAll">
+            <p>© 2018 - 中国人民大学 清史研究所</p>
+        </div>
+    </body>
+</html>

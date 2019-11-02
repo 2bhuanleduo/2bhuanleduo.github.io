@@ -1,0 +1,26 @@
+$(function(){
+    $(".hh").click(function(){
+        $(".HD").hide();
+        $(".XLB").hide();
+        $(".LZ").hide();
+        $(".HH").show();
+    });
+    $(".hd").click(function(){
+        $(".HH").hide();
+        $(".XLB").hide();
+        $(".LZ").hide();
+        $(".HD").show();
+    });
+    $(".lz").click(function(){
+        $(".HD").hide();
+        $(".XLB").hide();
+        $(".HH").hide();
+        $(".LZ").show();
+    });
+    $(".xlb").click(function(){
+        $(".HD").hide();
+        $(".HH").hide();
+        $(".LZ").hide();
+        $(".XLB").show();
+    });
+});

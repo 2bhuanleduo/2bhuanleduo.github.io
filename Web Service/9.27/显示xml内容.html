@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>解析xml</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <!-- <input type="file" id="inputFile" onchange="processFile()"> -->
+        <script type="text/javascript">
+
+            var str;
+            // var text="";
+    
+            // function processFile()
+            // {
+            //     var file=document.getElementById("inputFile").files[0];
+            //     var reader = new FileReader();
+            //     reader.readAsText(file);
+            //     reader.onload = function(e)
+            //     {
+            //         text = this.result;
+            //         console.log(text);
+            //     }
+    
+            // }
+            try //Internet Explorer
+            {
+                xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+            }
+            catch(e)
+            {
+            try //Firefox, Mozilla, Opera, etc.
+            {
+                xmlDoc=document.implementation.createDocument("","",null);
+            }
+            catch(e) {alert(e.message)}
+            }
+            try 
+            {
+            xmlDoc.async=false;
+            xmlDoc.load("bookstore.xml");
+            }
+            catch(e) {alert(e.message)}
+
+            str = xmlDoc.getElementsByTagName("book");
+
+            for(var i = 0;i<str.length;i++)
+            {
+                document.write(xmlDoc.getElementsByTagName("title")[i].childNodes[0].nodeValue);
+                document.write("<br />");
+                document.write(xmlDoc.getElementsByTagName("author")[i].childNodes[0].nodeValue);
+                document.write("<br />");
+                document.write(xmlDoc.getElementsByTagName("year")[i].childNodes[0].nodeValue);
+                document.write("<br />");
+                document.write(xmlDoc.getElementsByTagName("price")[i].childNodes[0].nodeValue);
+                document.write("<br />");
+                document.write("<br />");
+            }
+
+    
+        </script>
+    </body>
+
+
+</html>

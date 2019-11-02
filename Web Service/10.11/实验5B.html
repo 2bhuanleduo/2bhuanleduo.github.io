@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>实验5B</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        
+        <h2>这是一个JSON对象循环调用实例 5B</h2>
+        <p>
+            JSON对象内容 <br />
+            <span id="text"></span><br />         
+        </p>
+
+        <script>
+            var objectStr = {
+                "name":"海贼王",
+                "country":"Japan",
+                "mainCharac":"Luffy"
+            };
+            for(x in objectStr)
+            {
+                document.getElementById("text").innerHTML+=x+": "+objectStr[x]+"<br />";
+            }
+
+
+            
+
+        </script>
+
+    </body>
+
+
+</html>

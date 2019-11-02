@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>添加</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <script type="text/javascript">
+
+            var str;
+
+            try //Internet Explorer
+            {
+                xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+            }
+            catch(e)
+            {
+            try //Firefox, Mozilla, Opera, etc.
+            {
+                xmlDoc=document.implementation.createDocument("","",null);
+            }
+            catch(e) {alert(e.message)}
+            }
+            try 
+            {
+            xmlDoc.async=false;
+            xmlDoc.load("bookstore.xml");
+            }
+            catch(e) {alert(e.message)}
+
+            newNode = xmlDoc.createElement("book");
+
+            x=xmlDoc.documentElement;
+
+            //插入一个节点,第二个参数null表示在最后插入
+            x.insertBefore(newNode,null);
+
+            var x = xmlDoc.getElementsByTagName("book");
+
+            //为最后一个book节点添加title\author\price\year元素
+            str1=['title','author','year','price'];
+            str2=['JavaScript高级程序设计','Nicholas C.Zakas','2005','79.00'];
+
+            for(var j=0;j<4;j++)
+            {
+                newel_ele=xmlDoc.createElement(str1[j]);
+                newtext_t=xmlDoc.createTextNode(str2[j]);
+                newel_ele.appendChild(newtext_t);
+                x[4].appendChild(newel_ele);
+            }
+
+
+            
+            //添加元素,循环遍历整个book元素，添加edition元素
+            for(var i=0;i<x.length;i++)
+            {
+                newel=xmlDoc.createElement('edition');
+                newtext=xmlDoc.createTextNode('First');
+                newel.appendChild(newtext);
+                x[i].appendChild(newel);
+            }
+        
+
+            var y=xmlDoc.getElementsByTagName("title");
+            var z=xmlDoc.getElementsByTagName("edition");
+            for (i=0;i<y.length;i++)
+            {
+            document.write(y[i].childNodes[0].nodeValue);
+            document.write(" - Edition: ");
+            document.write(z[i].childNodes[0].nodeValue);
+            document.write("<br />");
+            }
+    
+        </script>
+    </body>
+
+
+</html>

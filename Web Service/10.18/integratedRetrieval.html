@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>综合检索-清史数据共享平台</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="normal.css">
+        <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    </head>    
+
+    <body>
+
+        <div class="container" style="position:relative;">
+            <div class="bgPic" style="height:100px;">
+                <div class="text-right" style="padding-top: 10px;">
+                    <a href="loginAndSignup.html" target="_blank" class="signInUp">登录</a>
+                    <a href="loginAndSignup.html" target="_blank" class="signInUp">注册</a>
+                </div>
+            </div>
+
+            <nav class="navbar navbar-expand-md">
+                <ul class="navbar-nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="首页.html" class="nav-link text-white">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="labIntroduction.html" class="nav-link text-white">实验室介绍</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="labMembers.html" class="nav-link text-white">实验室成员</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="labPerformace.html" class="nav-link text-white">实验室动态</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="resourceCatalog.html" class="nav-link text-white">资源目录</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="integratedRetrieval.html" class="nav-link active bg-secondary text-white">综合检索</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="dataUpload.html" class="nav-link text-white">上传资料</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="dataNavigation.html" class="nav-link text-white">数据导航</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="copyright.html" class="nav-link text-white">版权声明</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact_us.html" class="nav-link text-white">联系我们</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="container" style="position: relative;top:10px;">
+            <h6><strong>综合检索</strong></h6>
+            <hr>
+            <p>综合检索：在勾选的多个数据库中同时检索</p>
+            <form>
+                <div class="form-check row">
+                    <div class="form-check-inline col-md-3">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="checkAll">全选/全不选
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-check row">
+                    <div class="form-check-inline col-md-3">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="items" id="qssm">清史书目数据库
+                        </label>
+                    </div>
+                    <div class="form-check-inline col-md-3">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="items" id="qszt">清史专题数据库
+                        </label>
+                    </div>
+                    <div class="form-check-inline col-md-3">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="items" id="ykqdzsmlzc">已刊清代奏疏目录集成
+                        </label>
+                    </div>
+                </div>
+                <div class="form-check row">
+                    <div class="form-check-inline col-md-3">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="items" id="qdzhjnjjc">清代灾荒纪年暨集成数据库
+                        </label>
+                    </div>
+                    <div class="form-check-inline col-md-3">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="items" id="qmmgshdc">清末民国社会调查数据库
+                        </label>
+                    </div>
+                    <div class="form-check-inline col-md-3">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="items" id="jsllh">《缙绅录》量化数据库
+                        </label>
+                    </div>                    
+                </div> 
+                <div class="form-check row">
+                    <div class="form-check-inline col-md-3">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="items" id="qsdlxx">清史地理信息数据库（待开通）
+                        </label>
+                    </div>
+                </div>
+                <hr>
+            </form>
+
+        </div>
+
+        <div slass="container-fluid" style="height:auto;overflow-x:scroll;position: relative;top:10px;">
+            <div class="table">
+                <thead>
+                    <tr>
+                        <!-- <th>阳历年份</th>
+                        <th>季节号</th>
+                        <th>ID</th>
+                        <th>插补号</th>
+                        <th>卷号</th>
+                        <th>册号</th>
+                        <th>书名</th>
+                        <th>出版单位</th>
+                        <th>版本年号</th>
+                        <th>版本年代</th>
+                        <th>版本干支</th>
+                        <th>版本季节</th>
+                        <th>页码</th>
+                        <th>地区</th>
+                        <th>地名_题头</th>
+                        <th>机构二</th>
+                        <th>机构三</th>
+                        <th>缺分</th>
+                        <th>关缺等级</th>
+                        <th>官职一</th>
+                        <th>官职二</th>
+                        <th>加级</th>
+                        <th>加级军功</th>
+                        <th>爵位</th>
+                        <th>身份一</th>
+                        <th>姓</th>
+                        <th>名</th>
+                        <th>字号</th>
+                        <th>原籍省</th>
+                        <th>原籍县</th>
+                        <th>籍贯省</th>
+                        <th>籍贯县</th>
+                        <th>身份二</th>
+                        <th>旗分</th>
+                        <th>出身一</th>
+                        <th>科年一</th>
+                        <th>出身二</th>
+                        <th>科年二</th>
+                        <th>铨选年号</th>
+                        <th>铨选年代</th>
+                        <th>铨选闰月</th>
+                        <th>铨选月</th>
+                        <th>铨选方式</th> -->
+                    </tr>
+                </thead>
+            </div>
+        
+        </div>
+
+
+        <div class="container oneForAll">
+            <p>© 2018 - 中国人民大学 清史研究所</p>
+        </div>
+
+
+        <script>
+            window.onload = function(){
+
+                var items=document.getElementsByName("items");
+
+                var checkAllButton = document.getElementById("checkAll");
+
+                checkAllButton.onclick = function(){
+                    for(var i =0;i<items.length;i++)
+                    {
+                        items[i].checked=checkAllButton.checked;
+                    }
+                }
+
+            };
+        </script>
+    </body>
+</html>

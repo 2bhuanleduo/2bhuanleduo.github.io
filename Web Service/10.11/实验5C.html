@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>实验5C</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        
+        <h2>这是一个JSON对象调用实例 5C</h2>
+
+        <p>
+            第一个网站<span id="site1"></span><br />
+            第二个网站<span id="site2"></span>
+        </p>
+
+        </p>
+
+        <script>
+            var myObj = {
+                "name":"runoob",
+                "alexa":10000,
+                "sites":{
+                    "site1":"www.baidu.com",
+                    "site2":"www.runob.com"
+                }
+            };
+
+            document.getElementById("site1").innerHTML=myObj.sites.site1;
+            document.getElementById("site2").innerHTML=myObj.sites.site2;
+
+
+
+
+
+
+
+
+
+            
+
+        </script>
+
+    </body>
+
+
+</html>
